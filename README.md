@@ -6,4 +6,4 @@ This repo contains the database that was used for training both the region detec
 3. In these folders examples are classified into Structured and Unstructured weeds, as well as into a Grass Subfolder
 4. Finally, for each of the latter class-folders, sets of train and test images (which were generated randomly via a python code) are presented as were used during training, validation and testing stages
 
-Additionally, outputs of the proposed method over selected testing images are available in the Segmented folder
+Additionally, outputs of the proposed method over selected testing images are available in the Segmented folder.
