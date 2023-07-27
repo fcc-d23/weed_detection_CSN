@@ -1,8 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this database, please cite it as below."
 authors:
-  - family-names: Calderara-Cea, Torres-Torriti
-    given-names: Felipe, Miguel
+  - family-names: Calderara-Cea
+    given-names: Felipe
+  - family-names: Torres-Torriti
+    given-names: Miguel
 title: "Database for the development of a two stage automatic weed detection algorithm"
 version: 1.0.0
 doi: 
