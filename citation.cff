@@ -8,4 +8,5 @@ authors:
 title: "Database for the development of a two stage automatic weed detection algorithm"
 version: 1.0.0
 doi: 
+repository-code: https://github.com/fcc-d23/weed_detection_CSN
 date-released: 202x-xx-xx
