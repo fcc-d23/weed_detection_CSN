@@ -1,0 +1,6 @@
+Tamaño de las imágenes de entrada: (128, 128)
+Tamaño del batch de entrenamiento: 32
+Epoch de máxima accuracy de validación:  1683
+Epochs de entrenamiento: 1750
+Accuracy sobre el conjunto de entrenamiento: 0.8774834437086093
+Accuracy sobre el conjunto de prueba: 0.831168835813349

@@ -48,11 +48,20 @@ from CNN.seg_functions import CSN_region_seg, pipeline, NMS_bb
 #Main pipeline begins...
 #Loading of trained models
 CNN_folder = cwd + '/CNN_data/CNN/CNN_models'
-CSN_folder = cwd + '/Pasto/extract/data/CSN'
+CSN_folder = cwd + '/CNN_data/CSN/CSN_models'
 #Crossval data is loaded to guarantee the best performance in crossvalidation
 crossval_CNN_dir =  CNN_folder + '/crossval_stats'
-CNN_sld_model = crossval_stat_calc(CNN_folder, crossval_CNN_dir, CNN_class_name = 'CNN')
+CNN_model = crossval_stat_calc(CNN_folder, crossval_CNN_dir, CNN_class_name = 'CNN')
+crossval_CSN_dir = CSN_folder + '/crossval_stats'
+CSN_model = crossval_stat_calc(CSN_folder, crossval_CSN_dir, CNN_class_name = 'CSN')
 
+#The centroid is obtained for CSN detection
+sources_list, class_list = multiclassparser(cwd + '/Database/Frames/Regions')
+X, Y, class_dict_reg = multiclass_preprocessing(sources_list, class_list, image_size = (128,128,3))
+CNN_train_test_ratio = .9
+X_train, X_val, X_test, Y_train, Y_val, Y_test, class_dict_reg = multiclass_set_creator(X, Y, class_dict_reg, CSN_folder, train_test_rate = CNN_train_test_ratio, test_val_rate = 0.5, CNN_class='CNN')    
+
+feat_mean_reg, class_dict_reg, semantic_net_sld = CSN_centroid_finder(X_train, Y_train, CSN_model, class_dict_reg, save_data = True, save_dir = cwd + '/CNN_data/CSN' )
 raise ValueError("todo bien hasta l 56")
 ##DATA TAGGING##
 app =QApplication([])
