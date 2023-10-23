@@ -667,8 +667,6 @@ def crossval_stat_calc(origin_folder, stat_save_destiny, CNN_class_name = 'CNN',
             #The best validation (and subsequently testing) value for the current nfold is found
             best_val_nfold,  best_val_nfold_idx = np.max(nfold_data_dict['val_multiclass_list']),np.argmax(nfold_data_dict['val_multiclass_list'])
             best_test_nfold = nfold_data_dict['test_multiclass_list'][best_val_nfold_idx]
-            print("BEST", nfold_data_dict['best_test_multiclass'])
-            input("A")
             #If the performance on the current test set is better than the overall performance, the old values are replaced
             if best_test_nfold>best_test_acc:
                 print('best_validation_infold',best_val_nfold)
@@ -694,8 +692,6 @@ def crossval_stat_calc(origin_folder, stat_save_destiny, CNN_class_name = 'CNN',
                     pred = False, C_in = best_confusionmat_test, title = 'Best fold test data')
                 copyfile(dict_name, stat_save_destiny + '/best_dict.pickle')
                 plt.close('all')
-            print('best_test' + str(best_test_acc))
-            print(best_fold_name)
     #The folder containing the best trained model is copied to the destination folder and then the complete model is returned
     copy_tree(best_fold_name, stat_save_destiny + '/best_model/')
     if CNN_class_name == 'CNN' or CNN_class_name == 'TL': model = load_model(best_fold_name + '/best_iter_model.h5')

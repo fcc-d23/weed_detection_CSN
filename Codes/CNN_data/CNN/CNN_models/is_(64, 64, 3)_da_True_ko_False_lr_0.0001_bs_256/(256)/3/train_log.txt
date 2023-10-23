@@ -1,0 +1,6 @@
+Size of input images: (64, 64)
+Training batch size: 256
+Epoch of maximum validation accuracy:  400
+Training epochs: 425
+Accuracy over training set: 0.9329701166785116
+Accuracy over testing set: 0.8798679908510089
