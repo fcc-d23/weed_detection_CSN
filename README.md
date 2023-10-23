@@ -1,3 +1,6 @@
+# Weed detection method
+The main code used by the method described in the paper is uploaded in a separate folder, which contains both the libraries used to train the models and perform segmentation over full images. This folder contains also contains a simple example of use of the method over a folder of images (in this case the one in the database dubbed "Full Images") which can be used to assess the method in question. The code was tested using Numpy 1.19.5, TensorFlow-GPU 1.14.0 , Keras 2.2.3 and OpenCV 3.4.7.28.
+
 # Weed detection database
 
 This repo contains the database that was used for training both the region detection model (the CSN architecture) and the sub-frame detection model (the CNN architecture). The database is structured as follows:
