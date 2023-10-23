@@ -1,0 +1,33 @@
+for frame_r in range(frames_r):
+            for frame_c in range(frames_c):
+                #Se calculan las coordenadas para el cuadro correspondiente
+                frame_central_coord = [ frame_r * sld_step[0], frame_r*sld_step[0] + win_size[0], frame_c*sld_step[1], frame_c*sld_step[1] + win_size[1] ]
+                #Se crea un arreglo con las coordenadas de todos los cuadros para la posterior reconstrucción de la imagen
+                frame_array[frame_r, frame_c,:] = frame_central_coord
+                frame_array_in[ ( ( frames_c)*frame_r + frame_c ), : ,: ,: ] = cv2.resize(img_rgb[ frame_central_coord[0] : frame_central_coord[1],\
+                frame_central_coord[2] : frame_central_coord[3], :], (new_win_shape[0], new_win_shape[1]) )
+                
+                #Se adjuntan las coordenadas para asociar a predicciones de CNN más adelante
+                frame_coordinates_in[ ( ( frames_c )*frame_r + frame_c ), :  ] = frame_central_coord
+        for frame_r in range(frames_r):
+            for _ in range(1):
+                #Se calculan las coordenadas para el cuadro correspondiente
+                frame_central_coord = [ frame_r * sld_step[0], frame_r*sld_step[0] + win_size[0], img_rgb.shape[1]-win_size[1], img_rgb.shape[1] ]
+                #Se crea un arreglo con las coordenadas de todos los cuadros para la posterior reconstrucción de la imagen
+                frame_array[frame_r, frame_c,:] = frame_central_coord
+                frame_array_in[ ( ( frames_c)*frame_r + frame_c ), : ,: ,: ] = cv2.resize(img_rgb[ frame_central_coord[0] : frame_central_coord[1],\
+                frame_central_coord[2] : frame_central_coord[3], :], (new_win_shape[0], new_win_shape[1]) )
+                
+                #Se adjuntan las coordenadas para asociar a predicciones de CNN más adelante
+                frame_coordinates_in[ ( ( frames_c )*frame_r + frame_c ), :  ] = frame_central_coord
+        for frame_c in range(frames_c):
+            for _ in range(1):
+                #Se calculan las coordenadas para el cuadro correspondiente
+                frame_central_coord = [ img_rgb.shape[0]-win_size[0], img_rgb.shape[0], frame_c*sld_step[1], frame_c*sld_step[1] + win_size[1] ]
+                #Se crea un arreglo con las coordenadas de todos los cuadros para la posterior reconstrucción de la imagen
+                frame_array[frame_r, frame_c,:] = frame_central_coord
+                frame_array_in[ ( ( frames_c)*frame_r + frame_c ), : ,: ,: ] = cv2.resize(img_rgb[ frame_central_coord[0] : frame_central_coord[1],\
+                frame_central_coord[2] : frame_central_coord[3], :], (new_win_shape[0], new_win_shape[1]) )
+                
+                #Se adjuntan las coordenadas para asociar a predicciones de CNN más adelante
+                frame_coordinates_in[ ( ( frames_c )*frame_r + frame_c ), :  ] = frame_central_coord
